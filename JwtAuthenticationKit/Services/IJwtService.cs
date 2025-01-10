@@ -9,16 +9,14 @@ using System.Text;
 
 namespace JwtAuthenticationKit.Services
 {
-    public interface IJwtServices
+    public interface IJwtService
     {
         string GenerateToken(string userId, string role);
         ClaimsPrincipal ValidateToken(string token);
         string GenerateRefreshToken();
-        //Validate the refresh token
-        ClaimsPrincipal ValidateRefreshToken(string token);
     }
 
-    public class JwtService : IJwtServices
+    public class JwtService : IJwtService
     {
         private readonly JwtOptions _options;
 
@@ -93,10 +91,7 @@ namespace JwtAuthenticationKit.Services
             return Convert.ToBase64String(randomNumber);
         }
 
-        public ClaimsPrincipal ValidateRefreshToken(string refreshToken)
-        {
-            throw new NotImplementedException();
-        }
+       
 
     }
 }
